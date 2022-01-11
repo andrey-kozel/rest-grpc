@@ -21,7 +21,7 @@ import om.akozel.restgrpc.model.UpdateTodo;
 import om.akozel.restgrpc.service.TodoService;
 
 @Slf4j
-@Controller
+@Controller("/todos")
 public class TodoResource {
 
   private final TodoService todoService;

@@ -6,4 +6,4 @@ micronaut:
 
 internal:
   urls:
-    todo-service: http://localhost:50002
+    todo-service: http://localhost:50001
