@@ -3,8 +3,8 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<artifactId>rest-grpc</artifactId>
 		<groupId>com.akozel</groupId>
+		<artifactId>service-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../service-parent/pom.xml</relativePath>
 	</parent>
@@ -12,5 +12,110 @@
 	<artifactId>api-gateway</artifactId>
 	<modelVersion>4.0.0</modelVersion>
 
+	<properties>
+		<io.micronaut.version>3.1.0</io.micronaut.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.micronaut</groupId>
+				<artifactId>micronaut-bom</artifactId>
+				<version>${io.micronaut.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.micronaut</groupId>
+			<artifactId>micronaut-inject</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.micronaut</groupId>
+			<artifactId>micronaut-http-client</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.micronaut</groupId>
+			<artifactId>micronaut-runtime</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.micronaut</groupId>
+			<artifactId>micronaut-http-server-netty</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>3.4.8</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler.maven.plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<fork>true</fork>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${org.lombok.version}</version>
+						</path>
+						<path>
+							<groupId>io.micronaut</groupId>
+							<artifactId>micronaut-inject-java</artifactId>
+							<version>${io.micronaut.version}</version>
+						</path>
+						<path>
+							<groupId>io.micronaut</groupId>
+							<artifactId>micronaut-validation</artifactId>
+							<version>${io.micronaut.version}</version>
+						</path>
+						<path>
+							<groupId>io.micronaut.openapi</groupId>
+							<artifactId>micronaut-openapi</artifactId>
+							<version>${io.micronaut.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+				<executions>
+					<execution>
+						<id>test-compile</id>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+						<configuration>
+							<compilerArgs>
+								<arg>-parameters</arg>
+							</compilerArgs>
+							<annotationProcessorPaths>
+								<path>
+									<groupId>io.micronaut</groupId>
+									<artifactId>micronaut-inject-java</artifactId>
+									<version>${io.micronaut.version}</version>
+								</path>
+								<path>
+									<groupId>io.micronaut</groupId>
+									<artifactId>micronaut-validation</artifactId>
+									<version>${io.micronaut.version}</version>
+								</path>
+							</annotationProcessorPaths>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
