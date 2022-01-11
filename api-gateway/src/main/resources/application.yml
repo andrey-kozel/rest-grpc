@@ -1,3 +1,9 @@
 micronaut:
   server:
     port: 50002
+    context-path: '/api'
+
+
+internal:
+  urls:
+    todo-service: http://localhost:50002
