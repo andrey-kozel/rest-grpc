@@ -1,11 +1,11 @@
-package om.akozel.restgrpc;
+package com.akozel.restgrpc;
 
 import io.micronaut.runtime.Micronaut;
 
-public class Application {
+public class ApiGateway {
 
   public static void main(final String[] args) {
-    Micronaut.run(Application.class);
+    Micronaut.run(ApiGateway.class);
   }
 
 }
