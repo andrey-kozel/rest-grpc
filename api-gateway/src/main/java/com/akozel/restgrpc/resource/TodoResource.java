@@ -1,6 +1,12 @@
 package com.akozel.restgrpc.resource;
 
+import java.util.List;
+import java.util.UUID;
+
 import com.akozel.restgrpc.client.TodoClient;
+import com.akozel.restgrpc.dto.TodoItemDto;
+import com.akozel.restgrpc.dto.TodoStatus;
+import com.akozel.restgrpc.dto.UpdateTodoDto;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -12,7 +18,7 @@ import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Controller("todos")
+@Controller("/api/todos")
 public class TodoResource {
 
   private final TodoClient todoClient;
@@ -23,22 +29,22 @@ public class TodoResource {
   }
 
   @Get("{id}")
-  public String getTodoItem(@PathVariable final String id) {
+  public TodoItemDto getTodoItem(@PathVariable final UUID id) {
     return todoClient.getTodoItem(id);
   }
 
   @Get
-  public String findTodos(@QueryValue("status") final String status) {
+  public List<TodoItemDto> findTodos(@QueryValue("status") final TodoStatus status) {
     return todoClient.findTodos(status);
   }
 
   @Post
-  public String createTodo(@Body final String body) {
+  public TodoItemDto createTodo(@Body final TodoItemDto body) {
     return todoClient.createTodo(body);
   }
 
   @Put("{id}")
-  public String updateTodo(@PathVariable final String id, @Body final String body) {
+  public TodoItemDto updateTodo(@PathVariable final UUID id, @Body final UpdateTodoDto body) {
     return todoClient.updateTodo(id, body);
   }
 

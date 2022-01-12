@@ -20,7 +20,7 @@ public class TodoService {
     this.todoRepository = todoRepository;
   }
 
-  public TodoItem getTodoItem(final String id) {
+  public TodoItem getTodoItem(final UUID id) {
     return todoRepository.getTodoItem(id);
   }
 

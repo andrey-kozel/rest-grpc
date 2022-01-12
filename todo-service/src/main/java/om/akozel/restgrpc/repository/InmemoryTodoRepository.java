@@ -17,7 +17,7 @@ public class InmemoryTodoRepository implements TodoRepository {
   private static final Map<UUID, TodoItem> itemsStorage = new ConcurrentHashMap<>();
 
   @Override
-  public TodoItem getTodoItem(final String id) {
+  public TodoItem getTodoItem(final UUID id) {
     return itemsStorage.get(id);
   }
 

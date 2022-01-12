@@ -11,7 +11,7 @@ import om.akozel.restgrpc.model.UpdateTodo;
 @Singleton
 public interface TodoRepository {
 
-  TodoItem getTodoItem(String id);
+  TodoItem getTodoItem(UUID id);
 
   List<TodoItem> findTodos(TodoStatus status);
 

@@ -84,6 +84,11 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -117,7 +122,17 @@
 							<artifactId>micronaut-openapi</artifactId>
 							<version>${io.micronaut.version}</version>
 						</path>
+						<path>
+							<groupId>io.micronaut.openapi</groupId>
+							<artifactId>micronaut-openapi</artifactId>
+							<version>${io.micronaut.version}</version>
+						</path>
 					</annotationProcessorPaths>
+					<compilerArgs>
+						<arg>
+							-J-Dmicronaut.openapi.views.spec=rapidoc.enabled=true,rapidoc.schema-style=table
+						</arg>
+					</compilerArgs>
 				</configuration>
 				<executions>
 					<execution>

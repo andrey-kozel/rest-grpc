@@ -37,7 +37,7 @@ public class TodoResource {
   }
 
   @Get("{id}")
-  public TodoItemDto getTodoItem(@PathVariable final String id) {
+  public TodoItemDto getTodoItem(@PathVariable final UUID id) {
     log.info("Loading todo item. Id:{}", id);
     final TodoItem todoItem = todoService.getTodoItem(id);
     return todoMapper.convert(todoItem);
