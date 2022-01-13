@@ -120,12 +120,7 @@
 						<path>
 							<groupId>io.micronaut.openapi</groupId>
 							<artifactId>micronaut-openapi</artifactId>
-							<version>${io.micronaut.version}</version>
-						</path>
-						<path>
-							<groupId>io.micronaut.openapi</groupId>
-							<artifactId>micronaut-openapi</artifactId>
-							<version>${io.micronaut.version}</version>
+							<version>3.2.0</version>
 						</path>
 					</annotationProcessorPaths>
 					<compilerArgs>

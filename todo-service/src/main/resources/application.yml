@@ -1,3 +1,18 @@
 micronaut:
   server:
-    port: 50001
+    port: 50002
+
+grpc:
+  server:
+    port: 50003
+    keep-alive-time: 3h
+    max-inbound-message-size: 1024
+
+endpoints:
+  all:
+    enabled: true
+    port: 50004
+  health:
+    enabled: true
+    sensitive: false
+    details-visible: ANONYMOUS

@@ -1,6 +1,6 @@
 micronaut:
   server:
-    port: 50002
+    port: 50001
   router:
     static-resources:
       swagger:
@@ -12,4 +12,4 @@ micronaut:
 
 internal:
   urls:
-    todo-service: http://localhost:50001
+    todo-service: http://localhost:50002

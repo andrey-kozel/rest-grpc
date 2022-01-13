@@ -13,6 +13,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
+		<protoc.version>3.17.2</protoc.version>
+		<grpc.version>1.39.0</grpc.version>
 		<disruptor.version>3.4.4</disruptor.version>
 	</properties>
 
@@ -43,6 +45,14 @@
 			<groupId>io.micronaut</groupId>
 			<artifactId>micronaut-http-server-netty</artifactId>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.micronaut.grpc</groupId>
+			<artifactId>micronaut-grpc-server-runtime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.micronaut</groupId>
+			<artifactId>micronaut-management</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.projectreactor</groupId>
@@ -123,11 +133,6 @@
 							<artifactId>micronaut-validation</artifactId>
 							<version>${io.micronaut.version}</version>
 						</path>
-						<path>
-							<groupId>io.micronaut.openapi</groupId>
-							<artifactId>micronaut-openapi</artifactId>
-							<version>${io.micronaut.version}</version>
-						</path>
 					</annotationProcessorPaths>
 					<compilerArgs>
 						<arg>-Amapstruct.suppressGeneratorTimestamp=true</arg>
@@ -157,6 +162,45 @@
 								</path>
 							</annotationProcessorPaths>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>kr.motd.maven</groupId>
+				<artifactId>os-maven-plugin</artifactId>
+				<version>1.6.2</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>detect</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.xolstice.maven.plugins</groupId>
+				<artifactId>protobuf-maven-plugin</artifactId>
+				<version>0.6.1</version>
+				<configuration>
+					<pluginId>grpc-java</pluginId>
+					<protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
+					<pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
+				</configuration>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<goals>
+							<goal>compile</goal>
+							<goal>compile-custom</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-compile</id>
+						<goals>
+							<goal>test-compile</goal>
+							<goal>test-compile-custom</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>

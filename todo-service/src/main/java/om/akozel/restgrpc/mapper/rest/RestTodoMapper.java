@@ -1,4 +1,4 @@
-package om.akozel.restgrpc.mapper;
+package om.akozel.restgrpc.mapper.rest;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import om.akozel.restgrpc.model.UpdateTodo;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface TodoMapper {
+public interface RestTodoMapper {
 
   TodoItemDto convert(TodoItem todoItem);
 
