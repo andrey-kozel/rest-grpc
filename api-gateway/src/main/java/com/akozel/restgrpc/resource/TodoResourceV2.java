@@ -3,7 +3,7 @@ package com.akozel.restgrpc.resource;
 import java.util.List;
 import java.util.UUID;
 
-import com.akozel.restgrpc.client.TodoClient;
+import com.akozel.restgrpc.client.GrpcTodoClient;
 import com.akozel.restgrpc.model.TodoItem;
 import com.akozel.restgrpc.model.TodoStatus;
 import com.akozel.restgrpc.model.UpdateTodo;
@@ -15,16 +15,14 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 import io.micronaut.http.annotation.QueryValue;
 import jakarta.inject.Inject;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-@Controller("/api/todos")
-public class TodoResource {
+@Controller("/api/v2/todos")
+public class TodoResourceV2 {
 
-  private final TodoClient todoClient;
+  private final GrpcTodoClient todoClient;
 
   @Inject
-  public TodoResource(TodoClient todoClient) {
+  public TodoResourceV2(final GrpcTodoClient todoClient) {
     this.todoClient = todoClient;
   }
 

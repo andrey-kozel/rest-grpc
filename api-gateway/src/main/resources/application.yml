@@ -13,3 +13,4 @@ micronaut:
 internal:
   urls:
     todo-service: http://localhost:50002
+    grpc-todo-service: http://localhost:50003

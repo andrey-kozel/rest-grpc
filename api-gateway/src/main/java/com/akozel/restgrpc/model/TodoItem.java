@@ -1,4 +1,7 @@
-package com.akozel.restgrpc.dto;
+package com.akozel.restgrpc.model;
+
+import java.time.Instant;
+import java.util.UUID;
 
 import io.micronaut.core.annotation.Introspected;
 import lombok.AccessLevel;
@@ -16,10 +19,12 @@ import lombok.extern.jackson.Jacksonized;
 @EqualsAndHashCode
 @ToString
 @Introspected
-public class UpdateTodoDto {
+public class TodoItem {
 
+  private final UUID id;
   private final String title;
   private final TodoStatus status;
   private final String description;
+  private final Instant createdAt;
 
 }

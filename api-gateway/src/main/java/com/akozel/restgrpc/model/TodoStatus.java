@@ -1,4 +1,4 @@
-package com.akozel.restgrpc.dto;
+package com.akozel.restgrpc.model;
 
 public enum TodoStatus {
 

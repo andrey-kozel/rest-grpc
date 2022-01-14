@@ -3,9 +3,9 @@ package com.akozel.restgrpc.client;
 import java.util.List;
 import java.util.UUID;
 
-import com.akozel.restgrpc.dto.TodoItemDto;
-import com.akozel.restgrpc.dto.TodoStatus;
-import com.akozel.restgrpc.dto.UpdateTodoDto;
+import com.akozel.restgrpc.model.TodoItem;
+import com.akozel.restgrpc.model.TodoStatus;
+import com.akozel.restgrpc.model.UpdateTodo;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
@@ -18,14 +18,14 @@ import io.micronaut.http.client.annotation.Client;
 public interface TodoClient {
 
   @Get("{id}")
-  TodoItemDto getTodoItem(@PathVariable UUID id);
+  TodoItem getTodoItem(@PathVariable UUID id);
 
   @Get
-  List<TodoItemDto> findTodos(@QueryValue TodoStatus status);
+  List<TodoItem> findTodos(@QueryValue TodoStatus status);
 
   @Post
-  TodoItemDto createTodo(@Body TodoItemDto body);
+  TodoItem createTodo(@Body TodoItem body);
 
   @Put("{id}")
-  TodoItemDto updateTodo(@PathVariable UUID id, @Body UpdateTodoDto body);
+  TodoItem updateTodo(@PathVariable UUID id, @Body UpdateTodo body);
 }

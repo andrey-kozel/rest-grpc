@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "todo";
+option java_outer_classname = "Todo";
+option objc_class_prefix = "HLW";
+
+package todo;
+
+service TodoService {
+  rpc findAll (SearchRequest) returns (SearchResult) {}
+  rpc getTodoItem (GetItemRequest) returns (ItemResult) {}
+  rpc createTodo (CreateItemRequest) returns (ItemResult) {}
+  rpc updateTodo (UpdateItemRequest) returns (ItemResult) {}
+}
+
+message GetItemRequest {
+  string id = 1;
+}
+
+message SearchRequest {
+  TodoStatus status = 1;
+}
+
+message CreateItemRequest {
+  TodoItemDto item = 1;
+}
+
+message UpdateItemRequest {
+  UpdateItemDto item = 1;
+  string id = 2;
+}
+
+message ItemResult {
+  TodoItemDto item = 1;
+}
+
+message SearchResult {
+  repeated TodoItemDto result = 1;
+}
+
+enum TodoStatus {
+  TODO = 0;
+  IN_PROGRESS = 1;
+  DONE = 2;
+}
+
+message TodoItemDto {
+  string id = 1;
+  string title = 2;
+  TodoStatus status = 3;
+  string description = 4;
+  int64 createdAt = 5;
+}
+
+message UpdateItemDto {
+  string title = 1;
+  TodoStatus status = 2;
+  string description = 3;
+}
